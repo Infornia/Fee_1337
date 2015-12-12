@@ -6,7 +6,7 @@
 #    By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/09 16:17:56 by mwilk             #+#    #+#              #
-#    Updated: 2015/12/12 16:52:27 by mwilk            ###   ########.fr        #
+#    Updated: 2015/12/12 17:32:44 by mwilk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,18 +29,18 @@ FEE_H = -I ./
 LIB_H = -I Libft/includes/
 LIB_L = -LLibft -lft
 
-all: makelib normal
+all: ml normal
 
-makelib:
+ml:
 		@make -C Libft
 
-makerelib:
+mrl:
 		@make -C libft re
 
-cleanlib:
+mcl:
 		@make -C libft clean
 
-fcleanlib:
+mfl:
 		@make -C libft fclean
 
 normal: clean $(NAME)
@@ -62,5 +62,5 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all normal clean fclean re makelib makerelib cleanlib fcleanlib
+.PHONY: all normal clean fclean re ml mrl mcl mfl
 
