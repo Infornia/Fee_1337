@@ -6,11 +6,15 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 16:48:08 by mwilk             #+#    #+#             */
-/*   Updated: 2015/12/12 16:49:13 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/12/12 18:42:13 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		main(void)
+int		main(int ac, char **av)
 {
+	if (ac == 2)
+		fee_1337(av[1]);
+	else
+		print_usage();
 	return (0);
 }
