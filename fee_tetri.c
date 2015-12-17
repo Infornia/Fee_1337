@@ -81,5 +81,5 @@ void	fee_tetri(t_data *d)
 	    i++;
 	}
 	
-	alloc_final_grid(d, i);
+	alloc_final_grid(d, i); // Aloue le nombre de tetrimino x la taille max d'un tetrimino (4 cases)
 }
