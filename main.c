@@ -10,11 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "fee_1337.h"
+
+static void	print_usage(int ac)
+{
+	if (ac != 2)
+		ft_putendl("\033[32m\tusage: ./fillit [File]\n\033[0m");
+	else
+		ft_putstr("\033[35m\n\t *****Welcome to Fee 1337*****\n\n\033[0m");
+}
+
 int		main(int ac, char **av)
 {
+	print_usage(ac);
 	if (ac == 2)
 		fee_1337(av[1]);
-	else
-		print_usage();
 	return (0);
 }

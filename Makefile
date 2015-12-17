@@ -19,7 +19,8 @@ OBJ_PATH = ./obj/
 SRC_PATH = ./
 
 OBJ = $(SRC:.c=.o)
-SRC = main.c\
+SRC = main.c fee_1337.c fee_error.c fee_utils.c fee_blocks_get.c fee_tetri.c \
+		tt_functions.c fee_tetri_help.c\
 
 OBJS = $(addprefix $(OJB_PATH),$(OBJ))
 SRCS = $(addprefix $(SRC_PATH),$(SRC))

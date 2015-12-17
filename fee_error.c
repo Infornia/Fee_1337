@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   fee_error.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 17:53:17 by mwilk             #+#    #+#             */
 /*   Updated: 2015/12/12 19:50:48 by mwilk            ###   ########.fr       */
@@ -12,37 +12,68 @@
 
 #include "fee_1337.h"
 
-static int	check_neighbor(char **t, int x, int y)
-{
-	if ()
-}
-
-static int		error_tetri(char **t)
+static void		error_char(t_data *d, char **t)
 {
 	int i;
 	int j;
+	int k;
 
 	j = 0;
-	i = 0;
-	while (j)
+	k = 0;
+	while (j < 4)
 	{
 		i = 0;
-		if 
 		while (i < 4)
 		{
-			if (!check_neighbor(t, i, j))
-				return (0);
+			if (!is_tetrichar(t[j][i]))
+				exit (tt_puterr("Bad Tetrimino Char", t[j], 0));
+			if (t[j][i] == '#' && ++k > 4)
+				exit (tt_ps("Tetrimino not valid", 0));
+			++i;
 		}
+		++j;
 	}
+	if (k < 4)
+		exit (tt_ps("Tetrimino not valid", 0));
+	d->nb_blocks++;
 }
 
-int		error_block()
+static int	error_block(t_data *d, int fd)
 {
+	char	*line;
 	int		i;
-	char	t[4][5];
+	int		eof;
 
-	while (get_next_line(fd, &line) > 1)
+	i = 0;
+	line = ft_strnew(5);
+	d->t = tt_malloc_tab(5, 5);
+	while ((eof = get_next_line(fd, &line)) >= 0)
 	{
+		ft_strcpy(d->t[i], line);
+		if (ft_strlen(line) != 4 && i != 4)
+			exit (tt_puterr("Bad number of char in this line:", line, 0));
+		else if (i == 4)
+		{
+			if ((ft_strcmp(line, "") && eof) || (!ft_strcmp(line, "") && !eof))
+				exit (tt_puterr("Bad Spacing character:", line, 0));
+			error_char(d, d->t);
+			if (!eof)
+				break ;
+			i = -1;
+		}
 		i++;
 	}
+	tt_del_tab(d->t, 5);
+	return (1);
+}
+
+int		fee_error(t_data *d)
+{
+	int		fd;
+	
+	if (!(fd = open(d->file, O_RDONLY)))
+    	exit (tt_puterr("Open file", d->file, 0));
+    error_block(d, fd);
+    close(fd);
+    return (tt_ps("All basic errors are OK", 1));
 }

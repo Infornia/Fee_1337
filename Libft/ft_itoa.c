@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/11 11:56:00 by mwilk             #+#    #+#             */
-/*   Updated: 2015/09/24 17:22:01 by mwilk            ###   ########.fr       */
+/*   Updated: 2014/12/03 21:29:32 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char		*ft_itoa(int n)
 	size_t	i;
 
 	i = 0;
-	init_lengths(&len, &p_10, n);
+	init_lengths (&len, &p_10, n);
 	ret = (char *)malloc((sizeof(*ret) * (len + 1)));
 	if (ret == NULL || n == -2147483648)
 		return (ret = !ret ? ret : "-2147483648");

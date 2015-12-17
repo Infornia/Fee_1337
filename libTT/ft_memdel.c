@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   usage.c                                            :+:      :+:    :+:   */
+/*   ft_memdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/10 15:30:23 by mwilk             #+#    #+#             */
-/*   Updated: 2015/12/12 18:37:58 by mwilk            ###   ########.fr       */
+/*   Created: 2014/11/09 19:46:13 by mwilk             #+#    #+#             */
+/*   Updated: 2014/11/12 18:04:25 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "libft.h"
 
-void			print_usage(int ac)
+void	ft_memdel(void **ap)
 {
-	if (ac != 2)
-		ft_puts("\033[32m\tusage: ./fillit [Map]\n\033[0m");
-	else
-		ft_putstr("\033[35m\n\t *****Welcome to Fee 1337*****\n\n\033[0m");
+	if (ap == NULL || *ap == NULL)
+		return ;
+	free(*ap);
+	*ap = NULL;
 }

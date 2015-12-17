@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/09 20:00:32 by mwilk             #+#    #+#             */
-/*   Updated: 2015/09/24 17:23:59 by mwilk            ###   ########.fr       */
+/*   Updated: 2014/12/08 14:47:42 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@ void	ft_strdel(char **as)
 {
 	if (as == NULL || *as == NULL)
 		return ;
-	free(*as);
+	free (*as);
 	*as = NULL;
 }

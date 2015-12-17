@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/06 15:42:11 by mwilk             #+#    #+#             */
-/*   Updated: 2015/09/24 17:23:48 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/01/06 18:57:21 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	*ft_realloc(void *ptr, size_t old, size_t size)
 		to_ret = (void *)ft_memalloc(size);
 	if (to_ret == NULL)
 		return (NULL);
-	ft_bzero(to_ret, (size) ? size : sizeof(char));
+	ft_bzero (to_ret, (size) ? size : sizeof(char));
 	if (old > size)
 		ft_memcpy(to_ret, ptr, (size) ? size : sizeof(char));
 	else
