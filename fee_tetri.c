@@ -12,24 +12,47 @@
 
 #include "fee_1337.h"
 
-
-
-//coucou BWAAHhHhhhhhHH Caca qui fait du surf
-//#Troplafrappe, professionnel++;
-//piqu nik sur les bord de Seine avec une corde :)
-// if (luna(bigmac, big tasty))
-//		grossir++;
-//return ("grosse boule de graisse")
-
-static void	alloc_final_grid(t_data *d, int size)
+int		fee_tetri_write_check(int id, char **grid, int x, int y)
 {
-	int	i;
-
-	i = -1;	
-	d->grid = tt_malloc_tab(size * 4, size * 4);
-	while (++i < size * 4)
-			ft_memset(d->grid[i], '.', size * 4);
+	//Vérifie que le tetrimino soit inscrivable à la position (x, y);
+	//Retourne 1 si oui et 0 sinon
+	(void)id;
+	(void)grid;
+	(void)x;
+	(void)y;
+	return (1);
 }
+
+void	fee_tetri_write(t_tetrimino t, char **grid, int x, int y)
+{
+	//Appelé après fee_tetri_write_check si celle-ci retourne 1
+	//Inscrit le tetrimino à la position (x, y) dans la grille
+
+	/*RAPPEL
+	typedef struct  s_tetrimino
+{
+	int     id;		<--l'id du tetrimino
+	char    ord;	<--Le charactère à imprimer pour ce tetrimino
+}               t_tetrimino;*/
+
+	ft_putchar(t.ord);
+	(void)grid;
+	(void)x;
+	(void)y;
+}
+
+//Une suggestion pour eviter que la norme nous pète au nez avec les +25 lignes
+/*static int	fee_tetri_read(char **t, int j, int i)
+{
+	while (j < 4 && !is_sharp(t[j][i]))
+	{
+		i = 0;
+		while (i < 4 && !is_sharp(t[j][i]))
+			i++;
+		j++;
+	}
+	fee_tetri_read_bis(t, j , i); // qui contient ta série de if apres le if ((t[j][i]) == '#') 
+}*/
 
 static int	fee_tetri_read(char **t)
 {
@@ -37,7 +60,6 @@ static int	fee_tetri_read(char **t)
 	int j;
 
 	j = 0;
-	ft_putendl("Je check un BLOCK LOLMDR");
 	//tt_printab(t);
 	while (j < 4)
 	{
@@ -46,7 +68,7 @@ static int	fee_tetri_read(char **t)
 		{
 			if ((t[j][i]) == '#')
 			{
-				if (t[j+1][i] == '#') //3, 7, 15, 16, 18
+				if (t[j+1][i] == '#') 
 				{
 					if (t[j+2][i] == '#') //4, 8, 10, 14
 						return (three_sharpj(t, i, j));			
@@ -66,9 +88,18 @@ static int	fee_tetri_read(char **t)
 	return (tt_ps("Not a tetrimino", 0));
 }
 
+static void	alloc_final_grid(t_data *d, int size)
+{
+	int	i;
+
+	i = -1;	
+	d->grid = tt_malloc_tab(size * 4, size * 4);
+	while (++i < size * 4)
+			ft_memset(d->grid[i], '.', size * 4);
+}
+
 void	fee_tetri(t_data *d)
 {
-		
 	int form;
 	int i;
 	
@@ -78,8 +109,8 @@ void	fee_tetri(t_data *d)
 	    form = fee_tetri_read(d->blocks[i]);
 	    printf("Le retour de read: %i\n\n", form);
 	    d->tetri[i].id = form;
+	    d->tetri[i].ord = i + 'A'; //Enregistre le char à imprimer pour l'ordre d'apparition des tetriminos
 	    i++;
 	}
-	
 	alloc_final_grid(d, i); // Aloue le nombre de tetrimino x la taille max d'un tetrimino (4 cases)
 }

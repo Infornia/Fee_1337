@@ -46,9 +46,7 @@ void    fee_1337(char *file)
     fee_error(d); // Check les erreurs de fichiers
     fee_blocks_get(d); // Crée le Tableau char ***blocks
     fee_tetri(d); // Check les tetriminos et assigne son id
-    fee_patern(d); // Assemble les tetriminos à l'aide d'un pattern ou brut force
-        //et appelle fee_tetri_read(d->tetri[i].id, x, y) pour remplir la grille d->grid
-    tt_printab(d->grid); // Imprime la grille finale
+    fee_pattern(d); // Assemble les tetriminos à l'aide d'un pattern ou brut force
+        //et appelle fee_tetri_write(d->tetri[i].id, c, x, y) pour remplir la grille d->grid
+    //tt_printab(d->grid); // Imprime la grille finale
 }
-
-//void    fee_write_in_tab(t_tetrimino tetri, int startx, int starty);

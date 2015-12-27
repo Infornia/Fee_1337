@@ -19,6 +19,13 @@ int     is_tetrichar(char c)
     return (0);
 }
 
+int     is_sharp(char c)
+{
+    if (c == '#')
+        return (1);
+    return (0);
+}
+
 void    fee_blocks_del(t_data *d)
 {
     int i;

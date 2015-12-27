@@ -25,13 +25,14 @@ static int	blocks_read(t_data *d, int fd)
 	d->t = tt_malloc_tab(5, 5);
 	while ((eof = get_next_line(fd, &line)) >= 0)
 	{
-		ft_strcpy(d->t[i], line);
+		if (eof)
+			ft_strcpy(d->t[i], line);
 		if (i == 4)
 		{
-			if (!eof)
-				break ;
 			i = -1;
 			d->blocks[block_nb++] = d->t;
+			if (!eof)
+				break ;
 			d->t = tt_malloc_tab(5, 5);
 		}
 		i++;
