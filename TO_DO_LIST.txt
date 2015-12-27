@@ -1,0 +1,11 @@
+# Scinder fee_tetri_read en 2
+# Ecrire fee_tetri_write_check
+# Ecrire fee_tetri_write
+
+
+//coucou BWAAHhHhhhhhHH Caca qui fait du surf
+//#Troplafrappe, professionnel++;
+//piqu nik sur les bord de Seine avec une corde :)
+// if (luna(bigmac, big tasty))
+//		grossir++;
+//return ("grosse boule de graisse")
