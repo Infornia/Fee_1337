@@ -9,3 +9,24 @@
 // if (luna(bigmac, big tasty))
 //		grossir++;
 //return ("grosse boule de graisse")
+
+/*typedef struct	s_luna
+{
+	int		huile;
+	char	*bigmac;
+	char	**fastfood;
+	float	*mayonnaise;
+	double	cheese;
+}					t_luna;
+//char	*feed(t_luna luna);
+char	*feed(t_luna luna)
+{
+	luna->fastfood[0] = "boule de gras";
+	luna->fastfood[1] = "Bide énorme";
+	luna->fastfood[2] = "Bourelets Xtrem";
+	luna->fastfood[3] = "RDV Mac DO";
+	luna->fastfood[4] = "Pas manger Vegan";
+	if (luna->huile == -1)
+		return ("famine");
+		
+}*/

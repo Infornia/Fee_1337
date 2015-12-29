@@ -55,3 +55,13 @@ int		tt_puterr(char *s, char *s2, int ret)
 		ft_putendl(s2);
 	return (ret);
 }
+
+int	tt_swapnb(int *a, int *b)
+{
+	int	tmp;
+	
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+	return (1);
+}

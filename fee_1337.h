@@ -42,6 +42,7 @@
 typedef struct  s_tetrimino
 {
 	int     id;
+	int     used;
 	char    ord;
 }               t_tetrimino;
 
@@ -52,7 +53,11 @@ typedef struct	s_data
 	char		***blocks;
 	int			nb_blocks;
 	char		**grid;
+	int			maxi;
+	int			maxj;
+
 	
+	int			old_x;
 	t_tetrimino *tetri;
 	
 }               t_data;
@@ -64,10 +69,10 @@ typedef struct	s_data
 int     fee_error(t_data *d);
 
 /*
-** fee_patern.c
+** fee_blocks_get.c
 */
 
-void    fee_pattern(t_data *d);
+void    fee_blocks_get(t_data *d);
 
 /*
 ** fee_tetri.c
@@ -87,10 +92,28 @@ int		three_sharpi(char **t, int i, int j);
 int		three_sharpj(char **t, int i, int j);
 
 /*
-** fee_blocks_get.c
+** fee_patern.c
 */
 
-void    fee_blocks_get(t_data *d);
+void    fee_pattern(t_data *d);
+
+/*
+** fee_check.c
+*/
+
+int		fee_check_sharp_3j(int id, char **grid, int x, int y);
+int		fee_check_sharp_3i(int id, char **grid, int x, int y);
+int		fee_check_sharp_2j(int id, char **grid, int x, int y);
+int		fee_check_sharp_2i(int id, char **grid, int x, int y);
+
+/*
+** fee_write.c
+*/
+
+void	fee_write_sharp_3j(t_tetrimino t, char **grid, int x, int y);
+void	fee_write_sharp_3i(t_tetrimino t, char **grid, int x, int y);
+void	fee_write_sharp_2j(t_tetrimino t, char **grid, int x, int y);
+void	fee_write_sharp_2i(t_tetrimino t, char **grid, int x, int y);
 
 /*
 ** tt_utils.c
@@ -111,12 +134,12 @@ char    **tt_malloc_tab(int size_1, int size_2);
 void	tt_printab(char **t);
 void	tt_printabtab(char ***t);
 void	tt_del_tab(char **t, int size);
+int		tt_swapnb(int *a, int *b);
 
 /*
 ** others
 */
 
 void    fee_1337(char *file);
-
 
 #endif

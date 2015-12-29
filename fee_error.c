@@ -75,5 +75,5 @@ int		fee_error(t_data *d)
     	exit (tt_puterr("Open file", d->file, 0));
     error_block(d, fd);
     close(fd);
-    return (tt_ps("All basic errors are OK", 1));
+    return (1);
 }
