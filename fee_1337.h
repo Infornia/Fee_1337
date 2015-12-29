@@ -63,6 +63,12 @@ typedef struct	s_data
 }               t_data;
 
 /*
+** fee_1337.c
+*/
+
+void    fee_1337(char *file);
+
+/*
 ** fee_error.c
 */
 
@@ -136,10 +142,5 @@ void	tt_printabtab(char ***t);
 void	tt_del_tab(char **t, int size);
 int		tt_swapnb(int *a, int *b);
 
-/*
-** others
-*/
-
-void    fee_1337(char *file);
 
 #endif

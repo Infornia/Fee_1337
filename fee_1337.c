@@ -40,12 +40,24 @@ static void fee_init(t_data *d, char *file)
 
 }
 
+static void realloc_grid(t_data *d)
+{
+	int		j;
+	char	**tmp;
+	
+	tmp = tt_malloc_tab(d->maxj + 1, d->maxi + 1);
+	j = -1;
+	while (++j < d->maxj + 1)
+		ft_strncpy(tmp[j], d->grid[j], d->maxi + 1);
+	tt_del_tab(d->grid, d->nb_blocks * 4);
+	d->grid = tmp;
+}
+
 static void	get_max(t_data *d, char **t)
 {
 	int		i;
 	int		j;
 	int		cmp;
-	char	**tmp;
 	
 	j = -1;
 	cmp = d->nb_blocks * 4;
@@ -61,12 +73,6 @@ static void	get_max(t_data *d, char **t)
 			}
 		}
 	}
-	tmp = tt_malloc_tab(d->maxj, d->maxi);
-	j = -1;
-	while (++j < d->maxj)
-		ft_strncpy(tmp[j], d->grid[j], d->maxi);
-	tt_del_tab(d->grid, d->nb_blocks * 4);
-	d->grid = tmp;
 }
 
 void    fee_1337(char *file)
@@ -82,5 +88,6 @@ void    fee_1337(char *file)
 	fee_pattern(d); // Assemble les tetriminos à l'aide d'un pattern ou brut force
 		//et appelle fee_tetri_write(d->tetri[i].id, c, x, y) pour remplir la grille d->grid
 	get_max(d, d->grid);
+	realloc_grid(d);
 	tt_printab(d->grid); // Imprime la grille finale
 }
