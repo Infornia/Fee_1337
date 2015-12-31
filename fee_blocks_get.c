@@ -49,7 +49,7 @@ void    fee_blocks_get(t_data *d)
     	exit (tt_ps("Too Many blocks", 0));
     if (!(d->blocks = (char ***)malloc(sizeof(char**) * d->nb_blocks)))
     	exit (tt_ps("Malloc Failed", 0));
-	if (!(fd = open(d->file, O_RDONLY)))
+	if ((fd = open(d->file, O_RDONLY)) == -1)
     	exit (tt_puterr("Open file", d->file, 0));
     if (!(blocks_read(d, fd)))
         exit (tt_ps("Failed to create Blocks", 0));

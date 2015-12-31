@@ -19,25 +19,26 @@
 # include <fcntl.h>
 # include <stdio.h>
 
-# define J_R    1
-# define J_U    2
-# define J_D    3
-# define J_L    4
-# define L_L    5
-# define L_U    6
-# define L_D    7
-# define L_R    8
-# define T_R    9
-# define T_D    10
-# define T_U    11
-# define T_L    12
-# define I_U    13
-# define I_T    14
-# define O_U    15
-# define Z_U    16
-# define Z_T    17
-# define S_U    18
-# define S_T    19
+# define NB_PATTERNS	2
+# define J_R			1
+# define J_U			2
+# define J_D			3
+# define J_L			4
+# define L_L			5
+# define L_U			6
+# define L_D			7
+# define L_R			8
+# define T_R			9
+# define T_D			10
+# define T_U			11
+# define T_L			12
+# define I_U			13
+# define I_T			14
+# define O_U			15
+# define Z_U			16
+# define Z_T			17
+# define S_U			18
+# define S_T			19
 
 typedef struct  s_tetrimino
 {
@@ -45,6 +46,31 @@ typedef struct  s_tetrimino
 	int     used;
 	char    ord;
 }               t_tetrimino;
+
+typedef struct  s_tetri
+{
+	int	t;
+	int	x;
+	int	y;
+}				t_tetri;
+
+typedef struct  s_pattern
+{
+	int	t1;
+	int	t2;
+	int	t3;
+	int	id1;
+	int	id2;
+	int	id3;
+	int	x1;
+	int	x2;
+	int	x3;
+	int	y1;
+	int	y2;
+	int	y3;
+	
+}				t_pattern;
+
 
 typedef struct	s_data
 {
@@ -55,18 +81,11 @@ typedef struct	s_data
 	char		**grid;
 	int			maxi;
 	int			maxj;
-
 	
-	int			old_x;
 	t_tetrimino *tetri;
+	t_pattern	*p;
 	
 }               t_data;
-
-/*
-** fee_1337.c
-*/
-
-void    fee_1337(char *file);
 
 /*
 ** fee_error.c
@@ -85,7 +104,7 @@ void    fee_blocks_get(t_data *d);
 */
 
 void	fee_tetri(t_data *d);
-void	fee_tetri_write(t_tetrimino t, char **grid, int x, int y);
+void	fee_tetri_write(t_tetrimino *t, char **grid, int x, int y);
 int		fee_tetri_write_check(int id, char **grid, int x, int y);
 
 /*
@@ -98,10 +117,18 @@ int		three_sharpi(char **t, int i, int j);
 int		three_sharpj(char **t, int i, int j);
 
 /*
-** fee_patern.c
+** fee_pattern.c
 */
 
 void    fee_pattern(t_data *d);
+
+/*
+** pattern_*.c
+*/
+
+void		check_pattern(t_data *d, t_pattern p, int x, int y);
+t_pattern	create_pattern(t_tetri t1, t_tetri t2, t_tetri t3);
+void		create_patterns(t_data *d);
 
 /*
 ** fee_check.c
@@ -142,5 +169,10 @@ void	tt_printabtab(char ***t);
 void	tt_del_tab(char **t, int size);
 int		tt_swapnb(int *a, int *b);
 
+/*
+** others
+*/
+
+void    fee_1337(char *file);
 
 #endif

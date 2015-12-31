@@ -25,8 +25,12 @@ int		fee_tetri_write_check(int id, char **grid, int x, int y)
 	return (0);
 }
 
-void	fee_tetri_write(t_tetrimino t, char **grid, int x, int y)
+void	fee_tetri_write(t_tetrimino *yeah, char **grid, int x, int y)
 {
+	t_tetrimino t;
+	
+	yeah->used = 1;
+	t = *yeah;
 	if (t.id == 2 || t.id == 6 || t.id == 9 || t.id == 12 || t.id == 13)
 		(fee_write_sharp_3j(t, grid, x, y));
 	if (t.id == 4 || t.id == 8 || t.id == 10 || t.id == 14)
@@ -37,18 +41,22 @@ void	fee_tetri_write(t_tetrimino t, char **grid, int x, int y)
 		(fee_write_sharp_2i(t, grid, x, y));
 }
 
-/*Une suggestion pour eviter que la norme nous pète au nez avec les +25 lignes
-static int	fee_tetri_read(char **t, int j, int i)
+static int	fee_tetri_read_bis(char **t, int i, int j)
 {
-	while (j < 4 && !is_sharp(t[j][i]))
+	if (t[j+1][i] == '#') 
 	{
-		i = 0;
-		while (i < 4 && !is_sharp(t[j][i]))
-			i++;
-		j++;
+		if (t[j+2][i] == '#') //4, 8, 10, 14
+			return (three_sharpj(t, i, j));			
+		return (two_sharpj(t, i, j));			
 	}
-	fee_tetri_read_bis(t, j , i); // qui contient ta série de if apres le if ((t[j][i]) == '#') 
-}*/
+	else if (t[j][i+1] == '#') //1, 5, 11, 17, 19
+	{
+		if (t[j][i+2] == '#') //2, 6, 9, 12, 13
+			return (three_sharpi(t, i, j));			
+		return (two_sharpi(t, i, j));			
+	}
+	return (0);
+}
 
 static int	fee_tetri_read(char **t)
 {
@@ -63,21 +71,8 @@ static int	fee_tetri_read(char **t)
 		while (i < 4)
 		{
 			if ((t[j][i]) == '#')
-			{
-				if (t[j+1][i] == '#') 
-				{
-					if (t[j+2][i] == '#') //4, 8, 10, 14
-						return (three_sharpj(t, i, j));			
-					return (two_sharpj(t, i, j));			
-				}
-				else if (t[j][i+1] == '#') //1, 5, 11, 17, 19
-				{
-					if (t[j][i+2] == '#') //2, 6, 9, 12, 13
-						return (three_sharpi(t, i, j));			
-					return (two_sharpi(t, i, j));			
-				}
-			}
-			++i;
+				return(fee_tetri_read_bis(t, i, j));
+			i++;
 		}
 		++j;
 	}

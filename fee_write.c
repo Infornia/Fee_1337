@@ -77,5 +77,5 @@ void	fee_write_sharp_2i(t_tetrimino t, char **grid, int x, int y)
 	if (t.id == 16)
 		grid[y + 1][x + 2] = t.ord;
 	else if (t.id == 18)
-		grid[y + 1][x - 2] = t.ord;
+		grid[y + 1][x - 1] = t.ord;
 }
