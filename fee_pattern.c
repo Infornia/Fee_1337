@@ -45,11 +45,12 @@ void	create_patterns(t_data *d)
 {
 	d->p[0] = create_pattern(ct(J_L, 0, 0), ct(Z_U, 0, 1), ct(J_R, 0, 2));
 	d->p[1] = create_pattern(ct(J_D, 0, 0), ct(Z_T, 2, 0), ct(J_U, 3, 0));
+	d->p[2] = create_pattern(ct(L_R, 0, 0), ct(S_U, 1, 1), ct(L_L, 2, 3));
+	d->p[3] = create_pattern(ct(L_U, 0, 0), ct(S_T, 1, 0), ct(L_D, 2, 0));
 }
 
 static void brut_force(t_data *d, int x, int y, int i)
 {
-	return ;
 	while (i < d->nb_blocks)
 	{
 		if (d->tetri[i].used)
