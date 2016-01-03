@@ -29,9 +29,9 @@ t_pattern	create_pattern(t_tetri t1, t_tetri t2, t_tetri t3)
 	p.t1 = t1.t;
 	p.t2 = t2.t;
 	p.t3 = t3.t;
-	p.id1 = 0;
-	p.id2 = 0;
-	p.id3 = 0;
+	p.id1 = -1;
+	p.id2 = -1;
+	p.id3 = -1;
 	p.x1 = t1.x;
 	p.x2 = t2.x;
 	p.x3 = t3.x;
@@ -45,46 +45,47 @@ void	create_patterns(t_data *d)
 {
 	d->p[0] = create_pattern(ct(J_L, 0, 0), ct(Z_U, 0, 1), ct(J_R, 0, 2));
 	d->p[1] = create_pattern(ct(J_D, 0, 0), ct(Z_T, 2, 0), ct(J_U, 3, 0));
-	d->p[2] = create_pattern(ct(L_R, 0, 0), ct(S_U, 1, 1), ct(L_L, 2, 3));
+	d->p[2] = create_pattern(ct(L_R, 0, 0), ct(S_U, 1, 1), ct(L_L, 2, 2));
 	d->p[3] = create_pattern(ct(L_U, 0, 0), ct(S_T, 1, 0), ct(L_D, 2, 0));
+	d->p[4] = create_pattern(ct(S_T, 0, 0), ct(L_D, 0, 1), ct(J_R, 2, 0));//jzl
+	d->p[5] = create_pattern(ct(J_D, 0, 0), ct(S_U, 0, 2), ct(L_L, 1, 3));//jzl
+	d->p[6] = create_pattern(ct(J_L, 0, 0), ct(L_U, 1, 0), ct(S_T, 1, 1));//jzl
+	d->p[7] = create_pattern(ct(Z_U, 0, 0), ct(J_R, 1, 0), ct(L_D, 0, 2));//jzl
+	d->p[8] = create_pattern(ct(J_D, 0, 0), ct(Z_T, 0, 2), ct(L_L, 2, 2));//lsj
+	d->p[9] = create_pattern(ct(L_U, 0, 0), ct(J_L, 0, 1), ct(Z_U, 1, 1));//lsj
+	d->p[10] = create_pattern(ct(L_R, 0, 0), ct(Z_T, 1, 1), ct(J_U, 1, 2));//lsj
+	d->p[11] = create_pattern(ct(L_U, 0, 0), ct(J_L, 0, 1), ct(Z_U, 1, 1));//lsj
+	d->p[12] = create_pattern(ct(L_R, 0, 0), ct(O_U, 1, 1), ct(J_R, 2, 0));//jol
+	d->p[13] = create_pattern(ct(J_D, 0, 0), ct(O_U, 1, 1), ct(J_D, 0, 2));//jol
+	d->p[14] = create_pattern(ct(J_L, 0, 0), ct(O_U, 1, 0), ct(L_L, 3, 0));//jol
+	d->p[15] = create_pattern(ct(L_U, 0, 0), ct(O_U, 0, 1), ct(J_U, 0, 3));//jol
 }
 
 static void brut_force(t_data *d, int x, int y, int i)
 {
 	while (i < d->nb_blocks)
 	{
-		if (d->tetri[i].used)
+		while (!fee_tetri_write_check(d->tetri[i].id, d->grid, x, y))
 		{
-			i++;
-			continue ;
+			if (x == y && ++x)
+				y = 0;
+			else if (x > y)
+				tt_swapnb(&x, &y);
+			else if (y > x && ++x)
+				tt_swapnb(&x, &y);
 		}
-		if (!d->tetri[i].used
-			&& fee_tetri_write_check(d->tetri[i].id, d->grid, x, y))
-		{
-			fee_tetri_write(&d->tetri[i++], d->grid, x, y);
-			y /= 3;
-			x /= 3;
-		}
-		if (x == y && ++x)
-			y = 0;
-		else if (x > y)
-			tt_swapnb(&x, &y);
-		else if (y > x && ++x)
-			tt_swapnb(&x, &y);
-		//printf("(%i, %i)\n", x, y);
+		if (!d->tetri[i].used)
+			fee_tetri_write(&d->tetri[i], d->grid, x, y);
+		y /= 2;
+		x /= 2;
+		i++;
 	}
 }
 
-void    fee_pattern(t_data *d)
+void    fee_pattern(t_data *d, int x, int y, int k)
 {
 	int i;
-	int x;
-	int y;
-	int k;
-	
-	x = 0;
-	y = 0;
-	k = -1;
+
 	while (++k < NB_PATTERNS)
 	{
 		i = 0;

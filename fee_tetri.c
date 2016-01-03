@@ -79,7 +79,7 @@ static int	fee_tetri_read(char **t)
 	return (tt_ps("Not a tetrimino", 0));
 }
 
-static void	alloc_final_grid(t_data *d, int size)
+static void	alloc_grid(t_data *d, int size)
 {
 	int	i;
 
@@ -104,5 +104,5 @@ void	fee_tetri(t_data *d)
 	    d->tetri[i].ord = i + 'A';
 	    i++;
 	}
-	alloc_final_grid(d, i);
+	alloc_grid(d, i);
 }

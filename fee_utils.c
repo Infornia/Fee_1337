@@ -35,3 +35,25 @@ void    fee_blocks_del(t_data *d)
         tt_del_tab(d->blocks[i], 5);
     free(d->blocks);
 }
+
+void	get_max(t_data *d, char **t)
+{
+	int		i;
+	int		j;
+	int		cmp;
+	
+	j = -1;
+	cmp = d->nb_blocks * 4;
+	while (++j < cmp)
+	{
+		i = -1;
+		while (++i < cmp)
+		{
+			if (t[j][i] != '.')
+			{
+				d->maxi = d->maxi < i ? i : d->maxi;
+				d->maxj = d->maxj < j ? j : d->maxj;
+			}
+		}
+	}
+}

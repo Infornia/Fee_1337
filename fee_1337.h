@@ -19,7 +19,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 
-# define NB_PATTERNS	4
+# define NB_PATTERNS	16
 # define J_R			1
 # define J_U			2
 # define J_D			3
@@ -120,7 +120,7 @@ int		three_sharpj(char **t, int i, int j);
 ** fee_pattern.c
 */
 
-void    fee_pattern(t_data *d);
+void    fee_pattern(t_data *d, int x, int y, int k);
 
 /*
 ** pattern_*.c
@@ -155,6 +155,7 @@ void	fee_write_sharp_2i(t_tetrimino t, char **grid, int x, int y);
 int     is_tetrichar(char c);
 void    fee_blocks_del(t_data *d);
 int     is_sharp(char c);
+void	get_max(t_data *d, char **t);
 
 /*
 ** tt_functions.c
