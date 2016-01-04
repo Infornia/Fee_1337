@@ -43,10 +43,10 @@ t_pattern	create_pattern(t_tetri t1, t_tetri t2, t_tetri t3)
 
 void	create_patterns(t_data *d)
 {
-	d->p[0] = create_pattern(ct(J_L, 0, 0), ct(Z_U, 0, 1), ct(J_R, 0, 2));
-	d->p[1] = create_pattern(ct(J_D, 0, 0), ct(Z_T, 2, 0), ct(J_U, 3, 0));
-	d->p[2] = create_pattern(ct(L_R, 0, 0), ct(S_U, 1, 1), ct(L_L, 2, 2));
-	d->p[3] = create_pattern(ct(L_U, 0, 0), ct(S_T, 1, 0), ct(L_D, 2, 0));
+	d->p[0] = create_pattern(ct(J_L, 0, 0), ct(Z_U, 0, 1), ct(J_R, 0, 2));//jzj
+	d->p[1] = create_pattern(ct(J_D, 0, 0), ct(Z_T, 2, 0), ct(J_U, 3, 0));//jzj
+	d->p[2] = create_pattern(ct(L_R, 0, 0), ct(S_U, 1, 1), ct(L_L, 2, 2));//lzl
+	d->p[3] = create_pattern(ct(L_U, 0, 0), ct(S_T, 1, 0), ct(L_D, 2, 0));//lzl
 	d->p[4] = create_pattern(ct(S_T, 0, 0), ct(L_D, 0, 1), ct(J_R, 2, 0));//jzl
 	d->p[5] = create_pattern(ct(J_D, 0, 0), ct(S_U, 0, 2), ct(L_L, 1, 3));//jzl
 	d->p[6] = create_pattern(ct(J_L, 0, 0), ct(L_U, 1, 0), ct(S_T, 1, 1));//jzl
@@ -59,6 +59,10 @@ void	create_patterns(t_data *d)
 	d->p[13] = create_pattern(ct(J_D, 0, 0), ct(O_U, 1, 1), ct(J_D, 0, 2));//jol
 	d->p[14] = create_pattern(ct(J_L, 0, 0), ct(O_U, 1, 0), ct(L_L, 3, 0));//jol
 	d->p[15] = create_pattern(ct(L_U, 0, 0), ct(O_U, 0, 1), ct(J_U, 0, 3));//jol
+	d->p[16] = create_pattern(ct(T_D, 0, 0), ct(L_U, 1, 0), ct(T_L, 1, 3));//ltt
+	d->p[17] = create_pattern(ct(T_R, 0, 0), ct(T_D, 0, 1), ct(L_L, 1, 3));//ltt
+	d->p[18] = create_pattern(ct(T_R, 0, 0), ct(T_U, 1, 2), ct(L_D, 0, 1));//ltt
+	d->p[19] = create_pattern(ct(L_R, 0, 0), ct(T_U, 1, 2), ct(T_L, 0, 3));//ltt 3
 }
 
 static void brut_force(t_data *d, int x, int y, int i)
