@@ -19,7 +19,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 
-# define NB_PATTERNS	16
+# define NB_PATTERNS	32
 # define J_R			1
 # define J_U			2
 # define J_D			3

@@ -59,10 +59,22 @@ void	create_patterns(t_data *d)
 	d->p[13] = create_pattern(ct(J_D, 0, 0), ct(O_U, 1, 1), ct(J_D, 0, 2));//jol
 	d->p[14] = create_pattern(ct(J_L, 0, 0), ct(O_U, 1, 0), ct(L_L, 3, 0));//jol
 	d->p[15] = create_pattern(ct(L_U, 0, 0), ct(O_U, 0, 1), ct(J_U, 0, 3));//jol
-	d->p[16] = create_pattern(ct(T_D, 0, 0), ct(L_U, 1, 0), ct(T_L, 1, 3));//ltt
+	d->p[16] = create_pattern(ct(T_D, 0, 0), ct(L_U, 1, 0), ct(T_L, 1, 2));//ltt
 	d->p[17] = create_pattern(ct(T_R, 0, 0), ct(T_D, 0, 1), ct(L_L, 1, 3));//ltt
 	d->p[18] = create_pattern(ct(T_R, 0, 0), ct(T_U, 1, 2), ct(L_D, 0, 1));//ltt
-	d->p[19] = create_pattern(ct(L_R, 0, 0), ct(T_U, 1, 2), ct(T_L, 0, 3));//ltt 3
+	d->p[19] = create_pattern(ct(L_R, 0, 0), ct(T_U, 1, 2), ct(T_L, 0, 3));//ltt 
+	d->p[20] = create_pattern(ct(T_D, 0, 0), ct(T_R, 1, 0), ct(J_U, 1, 2));//jtt
+	d->p[21] = create_pattern(ct(T_R, 0, 0), ct(T_U, 1, 2), ct(J_L, 0, 1));//jtt
+	d->p[22] = create_pattern(ct(J_D, 0, 0), ct(T_L, 0, 2), ct(T_U, 2, 1));//jtt
+	d->p[23] = create_pattern(ct(T_D, 0, 0), ct(T_L, 0, 3), ct(J_R, 1, 0));//jtt
+	d->p[24] = create_pattern(ct(L_R, 0, 0), ct(L_D, 1, 1), ct(O_U, 2, 0));//oll
+	d->p[25] = create_pattern(ct(L_U, 0, 0), ct(L_R, 0, 1), ct(O_U, 1, 2));//oll
+	d->p[26] = create_pattern(ct(L_U, 0, 0), ct(L_L, 2, 2), ct(O_U, 0, 1));//oll
+	d->p[27] = create_pattern(ct(L_D, 0, 2), ct(L_L, 1, 2), ct(O_U, 0, 0));//oll
+	d->p[28] = create_pattern(ct(J_L, 0, 0), ct(J_D, 1, 0), ct(O_U, 2, 1));//ojj
+	d->p[29] = create_pattern(ct(J_D, 0, 0), ct(J_R, 1, 1), ct(O_U, 0, 2));//ojj
+	d->p[30] = create_pattern(ct(J_U, 0, 2), ct(J_R, 2, 0), ct(O_U, 0, 0));//ojj
+	d->p[31] = create_pattern(ct(J_L, 0, 0), ct(J_U, 0, 3), ct(O_U, 1, 0));//ojj
 }
 
 static void brut_force(t_data *d, int x, int y, int i)
