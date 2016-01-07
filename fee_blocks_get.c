@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 17:53:17 by mwilk             #+#    #+#             */
-/*   Updated: 2015/12/12 19:50:48 by mwilk            ###   ########.fr       */
+/*   Updated: 2016/01/07 14:57:53 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,18 @@ static int	blocks_read(t_data *d, int fd)
 	return (1);
 }
 
-
-void    fee_blocks_get(t_data *d)
+void		fee_blocks_get(t_data *d)
 {
 	int		fd;
-	
+
 	if (d->nb_blocks > 26)
-    	exit (tt_ps("Too Many blocks", 0));
-    if (!(d->blocks = (char ***)malloc(sizeof(char**) * d->nb_blocks)))
-    	exit (tt_ps("Malloc Failed", 0));
+		exit(tt_ps("error", 0));
+	if (!(d->blocks = (char ***)malloc(sizeof(char**) * d->nb_blocks)))
+		exit(tt_ps("error", 0));
 	if ((fd = open(d->file, O_RDONLY)) == -1)
-    	exit (tt_puterr("Open file", d->file, 0));
-    if (!(blocks_read(d, fd)))
-        exit (tt_ps("Failed to create Blocks", 0));
-    close(fd);
-    return ((void)tt_ps("Blocks Created", 1));
+		exit(tt_ps("error", 0));
+	if (!(blocks_read(d, fd)))
+		exit(tt_ps("error", 0));
+	close(fd);
+	return (1);
 }

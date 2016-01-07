@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 17:53:17 by mwilk             #+#    #+#             */
-/*   Updated: 2015/12/12 19:50:48 by mwilk            ###   ########.fr       */
+/*   Updated: 2016/01/05 21:06:17 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@ static int	fee_tetri_read_bis(char **t, int i, int j)
 	if (t[j+1][i] == '#') 
 	{
 		if (t[j+2][i] == '#') //4, 8, 10, 14
-			return (three_sharpj(t, i, j));			
-		return (two_sharpj(t, i, j));			
+			return (three_sharpj(t, i, j));
+		return (two_sharpj(t, i, j));
 	}
 	else if (t[j][i+1] == '#') //1, 5, 11, 17, 19
 	{
 		if (t[j][i+2] == '#') //2, 6, 9, 12, 13
-			return (three_sharpi(t, i, j));			
-		return (two_sharpi(t, i, j));			
+			return (three_sharpi(t, i, j));
+		return (two_sharpi(t, i, j));
 	}
 	return (0);
 }
@@ -87,22 +87,22 @@ static void	alloc_grid(t_data *d, int size)
 	size *= 4;
 	d->grid = tt_malloc_tab(size, size);
 	while (++i < size)
-			ft_memset(d->grid[i], '.', size);
+		ft_memset(d->grid[i], '.', size);
 }
 
 void	fee_tetri(t_data *d)
 {
 	int form;
 	int i;
-	
+
 	i = 0;
 	while (i < d->nb_blocks)
 	{
-	    form = fee_tetri_read(d->blocks[i]);
-	    d->tetri[i].id = form;
-	    d->tetri[i].used = 0;
-	    d->tetri[i].ord = i + 'A';
-	    i++;
+		form = fee_tetri_read(d->blocks[i]);
+		d->tetri[i].id = form;
+		d->tetri[i].used = 0;
+		d->tetri[i].ord = i + 'A';
+		i++;
 	}
 	alloc_grid(d, i);
 }
