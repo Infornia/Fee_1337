@@ -16,5 +16,7 @@ int		main(int ac, char **av)
 {
 	if (ac == 2)
 		fee_1337(av[1]);
+	else
+		exit(tt_ps(ERR, 0));
 	return (0);
 }

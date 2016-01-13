@@ -26,15 +26,15 @@ static void		error_char(t_data *d, char **t)
 		while (i < 4)
 		{
 			if (!is_tetrichar(t[j][i]))
-				exit (tt_puterr("Bad Tetrimino Char", t[j], 0));
+				exit(tt_ps(ERR, 0));
 			if (t[j][i] == '#' && ++k > 4)
-				exit (tt_ps("Tetrimino not valid", 0));
+				exit(tt_ps(ERR, 0));
 			++i;
 		}
 		++j;
 	}
 	if (k < 4)
-		exit (tt_ps("Tetrimino not valid", 0));
+		exit(tt_ps(ERR, 0));
 	d->nb_blocks++;
 }
 
@@ -51,11 +51,11 @@ static int	error_block(t_data *d, int fd)
 	{
 		ft_strcpy(d->t[i], line);
 		if (ft_strlen(line) != 4 && i != 4)
-			exit (tt_puterr("Bad number of char in this line:", line, 0));
+			exit(tt_ps(ERR, 0));
 		else if (i == 4)
 		{
 			if ((ft_strcmp(line, "") && eof) || (!ft_strcmp(line, "") && !eof))
-				exit (tt_puterr("Bad Spacing character:", line, 0));
+				exit(tt_ps(ERR, 0));
 			error_char(d, d->t);
 			if (!eof)
 				break ;
@@ -72,7 +72,7 @@ int		fee_error(t_data *d)
 	int		fd;
 	
 	if (!(fd = open(d->file, O_RDONLY)))
-    	exit (tt_puterr("Open file", d->file, 0));
+    	exit(tt_ps(ERR, 0));
     error_block(d, fd);
     close(fd);
     return (1);

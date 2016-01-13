@@ -14,13 +14,13 @@
 
 int		fee_tetri_write_check(int id, char **grid, int x, int y)
 {
-	if (id == 2 || id == 6 || id == 9 || id == 12 || id == 13)
+	if (id == J_U || id == L_U || id == T_R || id == T_L || id == I_U)
 		return (fee_check_sharp_3j(id, grid, x, y));
-	if (id == 4 || id == 8 || id == 10 || id == 14)
+	if (id == J_L || id == L_R || id == T_D || id == I_T)
 		return (fee_check_sharp_3i(id, grid, x, y));
-	if (id == 1 || id == 5 || id == 11 || id == 17 || id == 19)
+	if (id == J_R || id == L_L || id == T_U || id == Z_T || id == S_T)
 		return (fee_check_sharp_2j(id, grid, x, y));
-	if (id == 7 || id == 15 || id == 16 || id == 18 || id == 3)
+	if (id == L_D || id == O_U || id == Z_U || id == S_U || id == J_D)
 		return (fee_check_sharp_2i(id, grid, x, y));
 	return (0);
 }
@@ -31,13 +31,13 @@ void	fee_tetri_write(t_tetrimino *yeah, char **grid, int x, int y)
 	
 	yeah->used = 1;
 	t = *yeah;
-	if (t.id == 2 || t.id == 6 || t.id == 9 || t.id == 12 || t.id == 13)
+	if (t.id == J_U || t.id == L_U || t.id == T_R || t.id == T_L || t.id == I_U)
 		(fee_write_sharp_3j(t, grid, x, y));
-	if (t.id == 4 || t.id == 8 || t.id == 10 || t.id == 14)
+	if (t.id == J_L || t.id == L_R || t.id == T_D || t.id == I_T)
 		(fee_write_sharp_3i(t, grid, x, y));
-	if (t.id == 1 || t.id == 5 || t.id == 11 || t.id == 17 || t.id == 19)
+	if (t.id == J_R || t.id == L_L || t.id == T_U || t.id == Z_T || t.id == S_T)
 		(fee_write_sharp_2j(t, grid, x, y));
-	if (t.id == 7 || t.id == 15 || t.id == 16 || t.id == 18 || t.id == 3)
+	if (t.id == L_D || t.id == O_U || t.id == Z_U || t.id == S_U || t.id == J_D)
 		(fee_write_sharp_2i(t, grid, x, y));
 }
 
@@ -45,17 +45,17 @@ static int	fee_tetri_read_bis(char **t, int i, int j)
 {
 	if (t[j+1][i] == '#') 
 	{
-		if (t[j+2][i] == '#') //4, 8, 10, 14
+		if (t[j+2][i] == '#')
 			return (three_sharpj(t, i, j));
 		return (two_sharpj(t, i, j));
 	}
-	else if (t[j][i+1] == '#') //1, 5, 11, 17, 19
+	else if (t[j][i+1] == '#')
 	{
-		if (t[j][i+2] == '#') //2, 6, 9, 12, 13
+		if (t[j][i+2] == '#')
 			return (three_sharpi(t, i, j));
 		return (two_sharpi(t, i, j));
 	}
-	return (0);
+	exit(tt_ps(ERR, 0));
 }
 
 static int	fee_tetri_read(char **t)
@@ -76,18 +76,7 @@ static int	fee_tetri_read(char **t)
 		}
 		++j;
 	}
-	return (tt_ps("Not a tetrimino", 0));
-}
-
-static void	alloc_grid(t_data *d, int size)
-{
-	int	i;
-
-	i = -1;
-	size *= 4;
-	d->grid = tt_malloc_tab(size, size);
-	while (++i < size)
-		ft_memset(d->grid[i], '.', size);
+	exit(tt_ps(ERR, 0));
 }
 
 void	fee_tetri(t_data *d)
@@ -95,14 +84,13 @@ void	fee_tetri(t_data *d)
 	int form;
 	int i;
 
-	i = 0;
-	while (i < d->nb_blocks)
+	i = -1;
+	while (++i < d->nb_blocks)
 	{
 		form = fee_tetri_read(d->blocks[i]);
 		d->tetri[i].id = form;
 		d->tetri[i].used = 0;
 		d->tetri[i].ord = i + 'A';
-		i++;
 	}
 	alloc_grid(d, i);
 }

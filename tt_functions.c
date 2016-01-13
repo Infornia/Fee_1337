@@ -83,3 +83,34 @@ int	tt_swapnb(int *a, int *b)
 	*b = tmp;
 	return (1);
 }
+
+float	tt_sqrt(int x)
+{
+	int		prev;
+	int		k;
+	int 	kmax;
+	float	s;
+	
+	prev = 0;
+	k = -1;
+	kmax = 1000;
+	s = 1;
+	while(++k < kmax)
+	{
+		prev = s;
+		s = (s + x / s) / 2;
+		if (prev == s)
+			break;
+	}
+	return s;
+}
+
+void	half_increment(int *x, int *y)
+{
+	if (*x == *y && ++(*x))
+		*y = 0;
+	else if (*x > *y)
+		tt_swapnb(x, y);
+	else if (*y > *x && ++(*x))
+		tt_swapnb(x, y);
+}

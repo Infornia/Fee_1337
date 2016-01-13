@@ -12,73 +12,73 @@
 
 #include "fee_1337.h"
 
-int		two_sharpj(char **t, int i, int j) //8, 15, 1, 19
+int		two_sharpj(char **t, int i, int j)
 {
-	if (t[j][i + 1] == '#') //8, 15, 18
+	if (t[j][i + 1] == '#')
 	{
 		if (t[j][i + 2] == '#')
-			return (8); //8, LL /
+			return (L_R);
 		else if (t[j + 1][i + 1] == '#')
-			return (15); //15, O /
+			return (O_U);
 		else if (t[j + 1][i - 1] == '#')
-			return (18); //S /
+			return (S_U);
 	}
-	else if (t[j + 1][i + 1] == '#') //1, 19, 11
+	else if (t[j + 1][i + 1] == '#')
 	{
 		if (t[j + 1][i + 2] == '#')
-			return (1); //1, LR /
+			return (J_R);
 		else if (t[j + 2][i + 1] == '#')
-			return (19); //19, ZL /
+			return (S_T);
 		if (t[j + 1][i - 1] == '#')
-			return (11); //TD /
+			return (T_U);
 	}
-	else if (t[j + 1][i - 1] == '#') //5, 17
+	else if (t[j + 1][i - 1] == '#')
 	{
 		if (t[j + 1][i - 2] == '#')
-			return (5);//LR
+			return (L_L);
 		if (t[j + 2][i - 1] == '#')
-			return (17);//ZR
+			return (Z_T);
 	}
-	exit (tt_ps("Not a form1", 0));
+	exit (tt_ps(ERR, 0));
 }
 
-int		three_sharpj(char **t, int i, int j) //5, 3, 9, 13, 2, 12 
+int		three_sharpj(char **t, int i, int j)
 {
 	if (t[j + 2][i + 1] == '#')
-		return (6); // L 
+		return (L_U);
 	if (t[j][i + 1] == '#')
-		return (3); //8, LU
+		return (J_D);
 	if (t[j + 1][i + 1] == '#')
-		return (9); //9, T
+		return (T_R);
 	if (t[j + 3][i] == '#')
-		return (13); //13, I
+		return (I_U);
 	if (t[j + 2][i - 1] == '#')
-		return (2); //2, J
+		return (J_U);
 	if (t[j + 1][i - 1] == '#')
-		return (12); // TR
-	exit (tt_ps("Not a form2", 0));
+		return (T_L);
+	exit (tt_ps(ERR, 0));
 }
 
-int		two_sharpi(char **t, int i, int j)//7, 16
+int		two_sharpi(char **t, int i, int j)
 {
 	if (t[j + 1][i + 1] == '#')
 	{
 		if (t[j + 2][i + 1] == '#')
-			return (7); //7, LU
+			return (L_D);
 		if (t[j + 1][i + 2] == '#')
-			return (16); //16 Z
+			return (Z_U);
 	}
 
-	exit (tt_ps("Not a form3", 0));
+	exit (tt_ps(ERR, 0));
 }
 
 int		three_sharpi(char **t, int i, int j) //4, 10, 14
 {
 	if (t[j + 1][i + 2] == '#')
-		return (4); //4, JL
+		return (J_L);
 	if (t[j + 1][i + 1] == '#')
-		return (10); // T
+		return (T_D);
 		if (t[j][i + 3] == '#')
-		return (14); //_
-	exit (tt_ps("Not a form4", 0));
+		return (I_T);
+	exit (tt_ps(ERR, 0));
 }

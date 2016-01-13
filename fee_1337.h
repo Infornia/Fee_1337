@@ -39,6 +39,7 @@
 # define Z_T			17
 # define S_U			18
 # define S_T			19
+# define ERR			"error\n"
 
 typedef struct  s_tetrimino
 {
@@ -81,6 +82,9 @@ typedef struct	s_data
 	char		**grid;
 	int			maxi;
 	int			maxj;
+	int			sqth;
+	int			x;
+	int			y;
 	
 	t_tetrimino *tetri;
 	t_pattern	*p;
@@ -129,6 +133,7 @@ void    fee_pattern(t_data *d, int x, int y, int k);
 void		check_pattern(t_data *d, t_pattern p, int x, int y);
 t_pattern	create_pattern(t_tetri t1, t_tetri t2, t_tetri t3);
 void		create_patterns(t_data *d);
+void		fee_solve(t_data *d, int x, int y);
 
 /*
 ** fee_check.c
@@ -154,14 +159,22 @@ void	fee_write_sharp_2i(t_tetrimino t, char **grid, int x, int y);
 
 int     is_tetrichar(char c);
 void    fee_blocks_del(t_data *d);
-int     is_sharp(char c);
-void	get_max(t_data *d, char **t);
+void	increment(t_data *d, int *x, int *y);
+int		get_max(t_data *d, char **t);
+/*
+** fee_grid.c
+*/
+
+void	alloc_grid(t_data *d, int size);
+void	newgrid(t_data *d, int size, int i);
+void	limit_grid(t_data *d);
+void	realloc_grid(t_data *d);
 
 /*
 ** tt_functions.c
 */
 
-
+float	tt_sqrt(int x);
 int		tt_ps(char *s, int ret);
 int		tt_puterr(char *s, char *s2, int ret);
 char    **tt_malloc_tab(int size_1, int size_2);

@@ -19,11 +19,15 @@ int		is_tetrichar(char c)
 	return (0);
 }
 
-int		is_sharp(char c)
+void	increment(t_data *d, int *x, int *y)
 {
-	if (c == '#')
-		return (1);
-	return (0);
+	if (*x < d->sqth)
+		(*x)++;
+	else
+	{
+		(*x) = 0;
+		(*y)++;
+	}
 }
 
 void	fee_blocks_del(t_data *d)
@@ -36,7 +40,7 @@ void	fee_blocks_del(t_data *d)
 	free(d->blocks);
 }
 
-void	get_max(t_data *d, char **t)
+int		get_max(t_data *d, char **t)
 {
 	int		i;
 	int		j;
@@ -44,16 +48,19 @@ void	get_max(t_data *d, char **t)
 
 	j = -1;
 	cmp = d->nb_blocks * 4;
+	d->maxi = 0;
+	d->maxj = 0;
 	while (++j < cmp)
 	{
 		i = -1;
 		while (++i < cmp)
 		{
-			if (t[j][i] != '.')
+			if (t[j][i] != '.' && t[j][i] != '2')
 			{
 				d->maxi = d->maxi < i ? i : d->maxi;
 				d->maxj = d->maxj < j ? j : d->maxj;
 			}
 		}
 	}
+	return (d->maxi < d->maxj ? d->maxj : d->maxi);
 }
