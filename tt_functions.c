@@ -102,7 +102,7 @@ float	tt_sqrt(int x)
 		if (prev == s)
 			break;
 	}
-	return s;
+	return (s);
 }
 
 void	half_increment(int *x, int *y)
