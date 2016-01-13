@@ -25,6 +25,19 @@
 # define BUFF_SIZE 128
 
 /*
+** TT_FUNCTIONS
+*/
+
+float			tt_sqrt(int x);
+int				tt_ps(char *s, int ret);
+int				tt_puterr(char *s, char *s2, int ret);
+char    		**tt_malloc_tab(int size_1, int size_2);
+void			tt_printab(char **t);
+void			tt_printabtab(char ***t);
+void			tt_del_tab(char **t, int size);
+int				tt_swapnb(int *a, int *b);
+
+/*
 ** TREE
 */
 
@@ -69,14 +82,14 @@ t_list			*ft_lstnew(void const *content, size_t content_size);
 
 int				tt_intlen(int nb);
 
+
 /*
-** DIVERS  O.O
+** FT_CALC
 */
+
 int				ft_atoi(const char *str);
 char			*ft_itoa(int c);
-void			ft_bzero(void *str, size_t n);
-void			*ft_realloc(void *ptr, size_t old, size_t size);
-void			ft_cat(int fd);
+
 
 /*
 ** FT_IS
@@ -93,6 +106,7 @@ int				ft_isspace(int c);
 /*
 ** FT_MEM
 */
+void			ft_bzero(void *str, size_t n);
 void			*ft_memalloc(size_t size);
 void			*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void			*ft_memchr(const void *s, int c, size_t n);
@@ -101,10 +115,12 @@ void			*ft_memcpy(void *dst, const void *src, size_t n);
 void			ft_memdel(void **ap);
 void			*ft_memmove(void *dst, const void *src, size_t len);
 void			*ft_memset(void *b, int c, size_t len);
+void			*ft_realloc(void *ptr, size_t old, size_t size);
 
 /*
 ** FT_PUT
 */
+void			ft_cat(int fd);
 void			ft_putchar(char c);
 void			ft_putchar_fd(char c, int fd);
 void			ft_putendl(const char *s);

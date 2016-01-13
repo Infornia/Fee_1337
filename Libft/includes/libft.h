@@ -25,6 +25,19 @@
 # define BUFF_SIZE 16
 
 /*
+** TT_FUNCTIONS
+*/
+
+float			tt_sqrt(int x);
+int				tt_ps(char *s, int ret);
+int				tt_puterr(char *s, char *s2, int ret);
+char    		**tt_malloc_tab(int size_1, int size_2);
+void			tt_printab(char **t);
+void			tt_printabtab(char ***t);
+void			tt_del_tab(char **t, int size);
+int				tt_swapnb(int *a, int *b);
+
+/*
 ** TREE
 */
 

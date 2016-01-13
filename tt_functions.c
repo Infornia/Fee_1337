@@ -105,7 +105,7 @@ float	tt_sqrt(int x)
 	return (s);
 }
 
-void	half_increment(int *x, int *y)
+void	tt_half_increment(int *x, int *y)
 {
 	if (*x == *y && ++(*x))
 		*y = 0;
