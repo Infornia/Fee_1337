@@ -6,7 +6,7 @@
 #    By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/09 16:17:56 by mwilk             #+#    #+#              #
-#    Updated: 2015/12/12 17:32:44 by mwilk            ###   ########.fr        #
+#    Updated: 2016/01/13 20:34:19 by mwilk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,8 +28,10 @@ SRCS = $(addprefix $(SRC_PATH),$(SRC))
 
 FEE_H = -I ./
 
-LIB_H = -I Libft/includes/
-LIB_L = -LLibft -lft
+#LIB_H = -I Libft/includes/
+LIB_H = -I libTT
+#LIB_L = -LLibft -lft
+LIB_L = -LlibTT -lft
 
 all: ml normal
 

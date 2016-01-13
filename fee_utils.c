@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 16:48:08 by mwilk             #+#    #+#             */
-/*   Updated: 2016/01/04 18:12:44 by mwilk            ###   ########.fr       */
+/*   Updated: 2016/01/13 18:49:51 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	fee_blocks_del(t_data *d)
 
 	i = 0;
 	while (i < d->nb_blocks)
-		tt_del_tab(d->blocks[i], 5);
+		tt_deltab(d->blocks[i], 5);
 	free(d->blocks);
 }
 

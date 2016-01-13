@@ -42,6 +42,6 @@ void    realloc_grid(t_data *d)
 	j = -1;
 	while (++j < max + 1)
 		ft_strncpy(tmp[j], d->grid[j], max + 1);
-	tt_del_tab(d->grid, d->nb_blocks * 4);
+	tt_deltab(d->grid, d->nb_blocks * 4);
 	d->grid = tmp;
 }

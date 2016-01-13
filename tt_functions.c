@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 15:10:16 by mwilk             #+#    #+#             */
-/*   Updated: 2016/01/07 15:12:18 by mwilk            ###   ########.fr       */
+/*   Updated: 2016/01/13 18:50:12 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	**tt_malloc_tab(int size_1, int size_2)
 	return (ret);
 }
 
-void	tt_del_tab(char **t, int size)
+void	tt_deltab(char **t, int size)
 {
 	int	i;
 
@@ -74,7 +74,7 @@ int		tt_puterr(char *s, char *s2, int ret)
 	return (ret);
 }
 
-int	tt_swapnb(int *a, int *b)
+int	tt_swpnb(int *a, int *b)
 {
 	int	tmp;
 
@@ -110,7 +110,7 @@ void	tt_half_increment(int *x, int *y)
 	if (*x == *y && ++(*x))
 		*y = 0;
 	else if (*x > *y)
-		tt_swapnb(x, y);
+		tt_swpnb(x, y);
 	else if (*y > *x && ++(*x))
-		tt_swapnb(x, y);
+		tt_swpnb(x, y);
 }

@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 14:27:02 by mwilk             #+#    #+#             */
-/*   Updated: 2015/03/25 18:00:40 by mwilk            ###   ########.fr       */
+/*   Updated: 2016/01/13 18:49:22 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int				tt_puterr(char *s, char *s2, int ret);
 char    		**tt_malloc_tab(int size_1, int size_2);
 void			tt_printab(char **t);
 void			tt_printabtab(char ***t);
-void			tt_del_tab(char **t, int size);
-int				tt_swapnb(int *a, int *b);
+void			tt_deltab(char **t, int size);
+int				tt_swpnb(int *a, int *b);
 
 /*
 ** TREE
