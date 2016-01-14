@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 17:53:17 by mwilk             #+#    #+#             */
-/*   Updated: 2015/12/12 19:50:48 by mwilk            ###   ########.fr       */
+/*   Updated: 2016/01/14 18:49:25 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void    fee_1337(char *file)
 	fee_blocks_get(d);
 	fee_tetri(d);
 	d->sqth = (tt_sqrt(4 * (d->nb_blocks + 1)) + 0.5);
-	fee_solve(d, 0, 0);
+	printf("Theorik: %i\n", d->sqth);
+	fee_solve(d, 0, 0, 0);
 	realloc_grid(d);
 	tt_printab(d->grid);
 }

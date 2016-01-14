@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 16:48:08 by mwilk             #+#    #+#             */
-/*   Updated: 2016/01/13 18:49:51 by mwilk            ###   ########.fr       */
+/*   Updated: 2016/01/14 20:03:28 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int		get_max(t_data *d, char **t)
 		i = -1;
 		while (++i < cmp)
 		{
-			if (t[j][i] != '.' && t[j][i] != '2')
+			if (ft_isupper(t[j][i]))
 			{
 				d->maxi = d->maxi < i ? i : d->maxi;
 				d->maxj = d->maxj < j ? j : d->maxj;

@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 16:49:36 by mwilk             #+#    #+#             */
-/*   Updated: 2015/12/12 19:51:02 by mwilk            ###   ########.fr       */
+/*   Updated: 2016/01/14 18:47:55 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ void    fee_pattern(t_data *d, int x, int y, int k);
 void		check_pattern(t_data *d, t_pattern p, int x, int y);
 t_pattern	create_pattern(t_tetri t1, t_tetri t2, t_tetri t3);
 void		create_patterns(t_data *d);
-void		fee_solve(t_data *d, int x, int y);
+void		fee_solve(t_data *d, int x, int y, int start);
 
 /*
 ** fee_check.c

@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 17:53:17 by mwilk             #+#    #+#             */
-/*   Updated: 2016/01/13 21:08:42 by mwilk            ###   ########.fr       */
+/*   Updated: 2016/01/14 18:27:18 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ static int	error_block(t_data *d, int fd)
 				error_char(d, d->t);
 				i = -1;
 			}
+			else if (!eof)
+				error_char(d, d->t);
 		}
 		else
 			exit(tt_ps(ERR, 0));
