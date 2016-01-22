@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 14:27:02 by mwilk             #+#    #+#             */
-/*   Updated: 2016/01/13 18:49:03 by mwilk            ###   ########.fr       */
+/*   Updated: 2016/01/22 19:59:04 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,8 @@ int				ft_isdigit(int c);
 int				ft_isgraph(int c);
 int				ft_isprint(int c);
 int				ft_isspace(int c);
+int				ft_isupper(int c);
+int				ft_islower(int c);
 
 /*
 ** FT_MEM
