@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 16:49:36 by mwilk             #+#    #+#             */
-/*   Updated: 2016/01/14 18:47:55 by mwilk            ###   ########.fr       */
+/*   Updated: 2016/01/25 17:32:20 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,6 @@ typedef struct	s_data
 	int			maxi;
 	int			maxj;
 	int			sqth;
-	int			x;
-	int			y;
 	
 	t_tetrimino *tetri;
 	t_pattern	*p;
