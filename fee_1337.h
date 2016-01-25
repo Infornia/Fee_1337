@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 16:49:36 by mwilk             #+#    #+#             */
-/*   Updated: 2016/01/25 17:32:20 by mwilk            ###   ########.fr       */
+/*   Updated: 2016/01/25 22:56:12 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,8 @@ typedef struct	s_data
 	int			maxi;
 	int			maxj;
 	int			sqth;
-	
+	int			stop;
+
 	t_tetrimino *tetri;
 	t_pattern	*p;
 	
@@ -125,13 +126,13 @@ int		three_sharpj(char **t, int i, int j);
 void    fee_pattern(t_data *d, int x, int y, int k);
 
 /*
-** pattern_*.c
+** fee_solve.c
 */
 
 void		check_pattern(t_data *d, t_pattern p, int x, int y);
 t_pattern	create_pattern(t_tetri t1, t_tetri t2, t_tetri t3);
 void		create_patterns(t_data *d);
-void		fee_solve(t_data *d, int x, int y, int start);
+void		fee_solve(t_data *d);
 
 /*
 ** fee_check.c
@@ -185,6 +186,6 @@ int		tt_swapnb(int *a, int *b);
 ** others
 */
 
-void    fee_1337(char *file);
+void	fee_1337(char *file);
 
 #endif

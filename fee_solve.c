@@ -1,44 +1,76 @@
 #include "fee_1337.h"
 
-static void brut_force(t_data *d, int x, int y, int i)
+static void simple_brut(t_data *d, int x, int y, int i)
 {
-	int	stop;
-
-	stop = i ? 1 : 0;
-	while (i < d->nb_blocks)
-	{
 		if (!d->tetri[i].used)
 		{
 			while (!fee_tetri_write_check(d->tetri[i].id, d->grid, x, y))
 				increment(d, &x, &y);
 			fee_tetri_write(&d->tetri[i], d->grid, x, y);
 		}
-		x = 0;
-		y = 0;
-		++i;
-		if (stop)
-			return ;
-	}
+		return ;
 }
 
-void	fee_solve(t_data *d, int x, int y, int start)
+static int print(t_data *d, const int *v, int x, int y)
 {
-	limit_grid(d);
-	brut_force(d, 0, 0, start);
-	brut_force(d, 0, 0, 0);
+	int i;
+
+	i = -1;
+//	printf("%i, %i, %i\n", x, y, d->sqth);
+	if (v != 0)
+		while (++i < d->nb_blocks)
+			simple_brut(d, 0, 0, v[i] - 1);
+//	if (y == 2)
+//		tt_printab(d->grid);
 	if (get_max(d, d->grid) > d->sqth)
 	{
 		newgrid(d, d->nb_blocks, -1);
-		if (x > d->sqth && y > d->sqth)
-		{
-			if (start == d->nb_blocks - 1 && d->sqth++)
-				fee_solve(d, 0, 0, 0);
-			else
-				fee_solve(d, x, y, ++start);
-		}
-		else if (x > d->sqth)
-			fee_solve(d, x, ++y, start);
-		else
-			fee_solve(d, ++x, y, start);
+		limit_grid(d);
+		if (x < d->sqth)
+			print(d, v, ++x, y);
+		else if (y < d->sqth)
+			print(d, v, 0, ++y);
+		return (0);
+	}
+	return (1);
+}
+
+static void permutation(t_data *d, int *Value, int k)
+{
+	static int	level = -1;
+	int			i;
+
+	if (d->stop)
+		return ;
+	i = -1;
+	Value[k] = ++level;
+	if (level == d->nb_blocks)
+		d->stop = print(d, Value, 0, 0);
+	else
+	{
+		while (++i < d->nb_blocks)
+			if (Value[i] == 0)
+				permutation(d, Value, i);
+	}
+	--level;
+	Value[k] = 0;
+}
+
+void	fee_solve(t_data *d)
+{
+	int i;
+	int tab[d->nb_blocks];
+
+	i = -1;
+	while (++i < d->nb_blocks)
+		tab[i] = 0;
+	limit_grid(d);
+	permutation(d, tab, 0);
+	if (d->maxj > d->sqth || d->maxi > d->sqth)
+	{
+		d->sqth++;
+		newgrid(d, d->nb_blocks, -1);
+		limit_grid(d);
+		fee_solve(d);
 	}
 }

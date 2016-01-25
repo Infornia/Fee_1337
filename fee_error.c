@@ -6,11 +6,27 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 17:53:17 by mwilk             #+#    #+#             */
-/*   Updated: 2016/01/14 18:27:18 by mwilk            ###   ########.fr       */
+/*   Updated: 2016/01/25 23:09:43 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fee_1337.h"
+
+
+static void		error_line(t_data *d, int fd)
+{
+	char	*line;
+	int		i;
+	int		eof;
+
+	i = 0;
+	line = ft_strnew(5);
+	d->t = tt_malloc_tab(5, 5);
+	while ((eof = read(fd, line, 21)) == 21)
+		;
+	if (eof != 20)
+		exit(tt_ps(ERR, 0));
+}
 
 static void		error_char(t_data *d, char **t)
 {
@@ -76,6 +92,10 @@ int		fee_error(t_data *d)
 {
 	int		fd;
 
+	if (!(fd = open(d->file, O_RDONLY)))
+		exit(tt_ps(ERR, 0));
+	error_line(d, fd);
+	close(fd);
 	if (!(fd = open(d->file, O_RDONLY)))
 		exit(tt_ps(ERR, 0));
 	error_block(d, fd);
