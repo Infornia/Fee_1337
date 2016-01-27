@@ -11,7 +11,7 @@ static void simple_brut(t_data *d, int x, int y, int i)
 		return ;
 }
 
-static int print(t_data *d, const int *v, int x, int y)
+static int print(t_data *d, const int *v)
 {
 	int i;
 
@@ -26,10 +26,6 @@ static int print(t_data *d, const int *v, int x, int y)
 	{
 		newgrid(d, d->nb_blocks, -1);
 		limit_grid(d);
-		if (x < d->sqth)
-			print(d, v, ++x, y);
-		else if (y < d->sqth)
-			print(d, v, 0, ++y);
 		return (0);
 	}
 	return (1);
@@ -45,7 +41,7 @@ static void permutation(t_data *d, int *Value, int k)
 	i = -1;
 	Value[k] = ++level;
 	if (level == d->nb_blocks)
-		d->stop = print(d, Value, 0, 0);
+		d->stop = print(d, Value);
 	else
 	{
 		while (++i < d->nb_blocks)
