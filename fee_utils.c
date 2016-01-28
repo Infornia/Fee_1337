@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 16:48:08 by mwilk             #+#    #+#             */
-/*   Updated: 2016/01/14 20:03:28 by mwilk            ###   ########.fr       */
+/*   Updated: 2016/01/28 22:30:24 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		is_tetrichar(char c)
 
 void	increment(t_data *d, int *x, int *y)
 {
-	if (*x < d->sqth)
+	if ((*x) < d->sqth)
 		(*x)++;
 	else
 	{

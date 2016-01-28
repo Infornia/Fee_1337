@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 17:53:17 by mwilk             #+#    #+#             */
-/*   Updated: 2016/01/25 23:17:28 by mwilk            ###   ########.fr       */
+/*   Updated: 2016/01/28 22:12:19 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,7 @@
 
 static void fee_theos(t_data *d)
 {
-	int i;
-	int found;
-
-	i = -1;
-	found = 0;
-	while (++i < d->nb_blocks)
-		if (d->tetri[i].id == I_U || d->tetri[i].id == I_T)
-			found++;
-	d->sqth = (tt_sqrt(4 * (d->nb_blocks + 1)) + 0.5);
-	if (d->sqth < 4 && found)
-		d->sqth = 4;
+	d->sqth = (int)(tt_sqrt(4 * (d->nb_blocks)));
 }
 static void fee_init(t_data *d, char *file)
 {
