@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/12 17:53:17 by mwilk             #+#    #+#             */
-/*   Updated: 2016/01/05 21:06:17 by mwilk            ###   ########.fr       */
+/*   Created: 2016/02/01 19:07:42 by mwilk             #+#    #+#             */
+/*   Updated: 2016/02/01 19:12:37 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fee_1337.h"
 
-int		fee_tetri_write_check(int id, char **grid, int x, int y)
+int			fee_tetri_write_check(int id, char **grid, int x, int y)
 {
 	if (id == J_U || id == L_U || id == T_R || id == T_L || id == I_U)
 		return (fee_check_sharp_3j(id, grid, x, y));
@@ -25,10 +25,10 @@ int		fee_tetri_write_check(int id, char **grid, int x, int y)
 	return (0);
 }
 
-void	fee_tetri_write(t_tetrimino *yeah, char **grid, int x, int y)
+void		fee_tetri_write(t_tetrimino *yeah, char **grid, int x, int y)
 {
 	t_tetrimino t;
-	
+
 	yeah->used = 1;
 	t = *yeah;
 	if (t.id == J_U || t.id == L_U || t.id == T_R || t.id == T_L || t.id == I_U)
@@ -43,15 +43,15 @@ void	fee_tetri_write(t_tetrimino *yeah, char **grid, int x, int y)
 
 static int	fee_tetri_read_bis(char **t, int i, int j)
 {
-	if (t[j+1][i] == '#') 
+	if (t[j + 1][i] == '#')
 	{
-		if (t[j+2][i] == '#')
+		if (t[j + 2][i] == '#')
 			return (three_sharpj(t, i, j));
 		return (two_sharpj(t, i, j));
 	}
-	else if (t[j][i+1] == '#')
+	else if (t[j][i + 1] == '#')
 	{
-		if (t[j][i+2] == '#')
+		if (t[j][i + 2] == '#')
 			return (three_sharpi(t, i, j));
 		return (two_sharpi(t, i, j));
 	}
@@ -64,22 +64,21 @@ static int	fee_tetri_read(char **t)
 	int j;
 
 	j = 0;
-	//tt_printab(t);
 	while (j < 4)
 	{
 		i = 0;
 		while (i < 4)
 		{
 			if ((t[j][i]) == '#')
-				return(fee_tetri_read_bis(t, i, j));
-			i++;
+				return (fee_tetri_read_bis(t, i, j));
+			++i;
 		}
 		++j;
 	}
 	exit(tt_ps(ERR, 0));
 }
 
-void	fee_tetri(t_data *d)
+void		fee_tetri(t_data *d)
 {
 	int form;
 	int i;

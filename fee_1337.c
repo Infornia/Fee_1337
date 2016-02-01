@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 17:53:17 by mwilk             #+#    #+#             */
-/*   Updated: 2016/01/28 22:12:19 by mwilk            ###   ########.fr       */
+/*   Updated: 2016/02/01 19:06:42 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void fee_init(t_data *d, char *file)
 void    fee_1337(char *file)
 {
 	t_data  *d;
-	
+
 	if (!(d = (t_data *)malloc(sizeof(t_data))))
 		exit (tt_ps(ERR, 0));
 	fee_init(d, file);

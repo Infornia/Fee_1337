@@ -1,16 +1,5 @@
 #include "fee_1337.h"
 
-static void simple_brut(t_data *d, int x, int y, int i)
-{
-	if (!d->tetri[i].used)
-	{
-		while (!fee_tetri_write_check(d->tetri[i].id, d->grid, x, y))
-			increment(d, &x, &y);
-		fee_tetri_write(&d->tetri[i], d->grid, x, y);
-	}
-	return ;
-}
-
 static void brut_force(t_data *d, int x, int y, int i)
 {
 	int tmpx;

@@ -6,7 +6,7 @@
 #    By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/09 16:17:56 by mwilk             #+#    #+#              #
-#    Updated: 2016/01/13 20:34:19 by mwilk            ###   ########.fr        #
+#    Updated: 2016/02/01 19:33:51 by mwilk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRC_PATH = ./
 
 OBJ = $(SRC:.c=.o)
 SRC = main.c fee_1337.c fee_error.c fee_utils.c fee_blocks_get.c fee_tetri.c \
-		tt_functions.c fee_tetri_help.c fee_check.c fee_write.c \
+		tt_functions.c fee_tetri_help.c fee_check.c fee_write.c brut.c \
 		fee_solve.c fee_grid.c \
 
 OBJS = $(addprefix $(OJB_PATH),$(OBJ))

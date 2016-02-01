@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 16:49:36 by mwilk             #+#    #+#             */
-/*   Updated: 2016/01/25 22:56:12 by mwilk            ###   ########.fr       */
+/*   Updated: 2016/02/01 19:40:12 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,21 @@
 # define S_T			19
 # define ERR			"error\n"
 
-typedef struct  s_tetrimino
+typedef struct	s_tetrimino
 {
-	int     id;
-	int     used;
-	char    ord;
-}               t_tetrimino;
+	int		id;
+	int		used;
+	char	ord;
+}				t_tetrimino;
 
-typedef struct  s_tetri
+typedef struct	s_tetri
 {
 	int	t;
 	int	x;
 	int	y;
 }				t_tetri;
 
-typedef struct  s_pattern
+typedef struct	s_pattern
 {
 	int	t1;
 	int	t2;
@@ -69,9 +69,8 @@ typedef struct  s_pattern
 	int	y1;
 	int	y2;
 	int	y3;
-	
-}				t_pattern;
 
+}				t_pattern;
 
 typedef struct	s_data
 {
@@ -87,105 +86,112 @@ typedef struct	s_data
 
 	t_tetrimino *tetri;
 	t_pattern	*p;
-	
-}               t_data;
+
+}				t_data;
 
 /*
 ** fee_error.c
 */
 
-int     fee_error(t_data *d);
+int				fee_error(t_data *d);
 
 /*
 ** fee_blocks_get.c
 */
 
-void    fee_blocks_get(t_data *d);
+void			fee_blocks_get(t_data *d);
 
 /*
 ** fee_tetri.c
 */
 
-void	fee_tetri(t_data *d);
-void	fee_tetri_write(t_tetrimino *t, char **grid, int x, int y);
-int		fee_tetri_write_check(int id, char **grid, int x, int y);
+void			fee_tetri(t_data *d);
+void			fee_tetri_write(t_tetrimino *t, char **grid, int x, int y);
+int				fee_tetri_write_check(int id, char **grid, int x, int y);
 
 /*
 ** fee_tetri_help.c
 */
 
-int		two_sharpi(char **t, int i, int j);
-int		two_sharpj(char **t, int i, int j);
-int		three_sharpi(char **t, int i, int j);
-int		three_sharpj(char **t, int i, int j);
+int				two_sharpi(char **t, int i, int j);
+int				two_sharpj(char **t, int i, int j);
+int				three_sharpi(char **t, int i, int j);
+int				three_sharpj(char **t, int i, int j);
 
 /*
 ** fee_pattern.c
 */
 
-void    fee_pattern(t_data *d, int x, int y, int k);
+void			fee_pattern(t_data *d, int x, int y, int k);
 
 /*
 ** fee_solve.c
 */
 
-void		check_pattern(t_data *d, t_pattern p, int x, int y);
-t_pattern	create_pattern(t_tetri t1, t_tetri t2, t_tetri t3);
-void		create_patterns(t_data *d);
-void		fee_solve(t_data *d);
+void			check_pattern(t_data *d, t_pattern p, int x, int y);
+t_pattern		create_pattern(t_tetri t1, t_tetri t2, t_tetri t3);
+void			create_patterns(t_data *d);
+void			fee_solve(t_data *d);
 
 /*
 ** fee_check.c
 */
 
-int		fee_check_sharp_3j(int id, char **grid, int x, int y);
-int		fee_check_sharp_3i(int id, char **grid, int x, int y);
-int		fee_check_sharp_2j(int id, char **grid, int x, int y);
-int		fee_check_sharp_2i(int id, char **grid, int x, int y);
+int				fee_check_sharp_3j(int id, char **grid, int x, int y);
+int				fee_check_sharp_3i(int id, char **grid, int x, int y);
+int				fee_check_sharp_2j(int id, char **grid, int x, int y);
+int				fee_check_sharp_2i(int id, char **grid, int x, int y);
 
 /*
 ** fee_write.c
 */
 
-void	fee_write_sharp_3j(t_tetrimino t, char **grid, int x, int y);
-void	fee_write_sharp_3i(t_tetrimino t, char **grid, int x, int y);
-void	fee_write_sharp_2j(t_tetrimino t, char **grid, int x, int y);
-void	fee_write_sharp_2i(t_tetrimino t, char **grid, int x, int y);
+void			fee_write_sharp_3j(t_tetrimino t, char **grid, int x, int y);
+void			fee_write_sharp_3i(t_tetrimino t, char **grid, int x, int y);
+void			fee_write_sharp_2j(t_tetrimino t, char **grid, int x, int y);
+void			fee_write_sharp_2i(t_tetrimino t, char **grid, int x, int y);
 
 /*
 ** tt_utils.c
 */
 
-int     is_tetrichar(char c);
-void    fee_blocks_del(t_data *d);
-void	increment(t_data *d, int *x, int *y);
-int		get_max(t_data *d, char **t);
+int				is_tetrichar(char c);
+void			fee_blocks_del(t_data *d);
+void			increment(t_data *d, int *x, int *y);
+int				get_max(t_data *d, char **t);
+
 /*
 ** fee_grid.c
 */
 
-void	alloc_grid(t_data *d, int size);
-void	newgrid(t_data *d, int size, int i);
-void	limit_grid(t_data *d);
-void	realloc_grid(t_data *d);
+void			alloc_grid(t_data *d, int size);
+void			newgrid(t_data *d, int size, int i);
+void			limit_grid(t_data *d);
+void			realloc_grid(t_data *d);
 
 /*
 ** tt_functions.c
 */
 
-float	tt_sqrt(int x);
-int		tt_ps(char *s, int ret);
-int		tt_puterr(char *s, char *s2, int ret);
-char    **tt_malloc_tab(int size_1, int size_2);
-void	tt_printab(char **t);
-void	tt_printabtab(char ***t);
-void	tt_del_tab(char **t, int size);
-int		tt_swapnb(int *a, int *b);
+float			tt_sqrt(int x);
+int				tt_ps(char *s, int ret);
+int				tt_puterr(char *s, char *s2, int ret);
+char			**tt_malloc_tab(int size_1, int size_2);
+void			tt_printab(char **t);
+void			tt_printabtab(char ***t);
+void			tt_del_tab(char **t, int size);
+int				tt_swapnb(int *a, int *b);
 
 /*
 ** others
 */
 
-void	fee_1337(char *file);
+void			fee_1337(char *file);
+
+/*
+** brut.c
+*/
+
+void			simple_brut(t_data *d, int x, int y, int i);
 
 #endif
