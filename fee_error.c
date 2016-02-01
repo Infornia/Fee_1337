@@ -6,14 +6,13 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 17:53:17 by mwilk             #+#    #+#             */
-/*   Updated: 2016/01/25 23:09:43 by mwilk            ###   ########.fr       */
+/*   Updated: 2016/02/01 22:31:52 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fee_1337.h"
 
-
-static void		error_line(t_data *d, int fd)
+static void			error_line(t_data *d, int fd)
 {
 	char	*line;
 	int		i;
@@ -28,7 +27,7 @@ static void		error_line(t_data *d, int fd)
 		exit(tt_ps(ERR, 0));
 }
 
-static void		error_char(t_data *d, char **t)
+static void			error_char(t_data *d, char **t)
 {
 	int i;
 	int j;
@@ -56,7 +55,7 @@ static void		error_char(t_data *d, char **t)
 	d->nb_blocks++;
 }
 
-static int	error_block(t_data *d, int fd)
+static int		error_block(t_data *d, int fd)
 {
 	char	*line;
 	int		i;
@@ -88,7 +87,7 @@ static int	error_block(t_data *d, int fd)
 	return (1);
 }
 
-int		fee_error(t_data *d)
+int				fee_error(t_data *d)
 {
 	int		fd;
 

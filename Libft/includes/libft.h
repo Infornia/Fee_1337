@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 14:27:02 by mwilk             #+#    #+#             */
-/*   Updated: 2016/01/13 18:49:22 by mwilk            ###   ########.fr       */
+/*   Updated: 2016/02/01 23:25:52 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 float			tt_sqrt(int x);
 int				tt_ps(char *s, int ret);
 int				tt_puterr(char *s, char *s2, int ret);
-char    		**tt_malloc_tab(int size_1, int size_2);
+char			**tt_malloc_tab(int size_1, int size_2);
 void			tt_printab(char **t);
 void			tt_printabtab(char ***t);
 void			tt_deltab(char **t, int size);
